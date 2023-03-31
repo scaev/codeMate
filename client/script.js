@@ -23,7 +23,7 @@ function typeText(element, text) {
 
   let interval = setInterval(() => {
     if (index < text.length) {
-      element.innerHTML += text.chartAt(index);
+      element.innerHTML += text.charAt(index);
       index++;
     } else {
       clearInterval(interval);
@@ -41,18 +41,18 @@ function generateUniqueId() {
 
 function chatStripe(isAi, value, uniqueId) {
   return `
-    <div class="wrapper ${isAi && "ai"}">
-        <div class="chat">
-            <div class="profile">
-                <img 
-                  src=${isAi ? bot : user} 
-                  alt="${isAi ? "bot" : "user"}" 
-                />
+        <div class="wrapper ${isAi && "ai"}">
+            <div class="chat">
+                <div class="profile">
+                    <img 
+                      src=${isAi ? bot : user} 
+                      alt="${isAi ? "bot" : "user"}" 
+                    />
+                </div>
+                <div class="message" id=${uniqueId}>${value}</div>
             </div>
-            <div class="message" id=${uniqueId}>${value}</div>
         </div>
-    </div>
-`;
+    `;
 }
 
 const handleSubmit = async (e) => {
